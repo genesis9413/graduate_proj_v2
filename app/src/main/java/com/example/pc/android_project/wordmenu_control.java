@@ -3,6 +3,7 @@ package com.example.pc.android_project;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ public class wordmenu_control extends AppCompatActivity {
                     Intent intent = new Intent(wordmenu_control.this, word_control.class);
                     String numday = numbtn[index].getText().toString();
                     intent.putExtra("numDay", numday);
+                    intent.putExtra("numDayIndex", index+1);
                     startActivity(intent);
                 }
             });

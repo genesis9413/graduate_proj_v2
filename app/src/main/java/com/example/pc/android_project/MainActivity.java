@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.pc.android_project.chat.LoginActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     Button study_btn, conver_btn;
@@ -22,9 +24,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, study_control.class);
-
                 startActivity(intent);
-
+            }
+        });
+        conver_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, com.example.pc.android_project.chat.MainActivity.class);
+                startActivity(intent);
             }
         });
     }
