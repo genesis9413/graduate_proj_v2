@@ -36,12 +36,19 @@
                 android:maxLines="1"
                 android:singleLine="true"
             tools:ignore="InvalidImeActionId" />
+
+        <ImageButton
+            android:id="@+id/stt_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/action_send"
+            android:src="@android:drawable/ic_btn_speak_now" />
         <ImageButton
                 android:id="@+id/send_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@android:drawable/ic_menu_send"
-                android:contentDescription="@string/action_send"/>
+                android:contentDescription="@string/action_stt"/>
 
     </LinearLayout>
 

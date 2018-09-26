@@ -1,10 +1,12 @@
 package com.example.pc.android_project.chat;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.speech.RecognizerIntent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,9 +34,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
+
+import static android.app.Activity.RESULT_OK;
 
 
 /**
@@ -45,6 +50,7 @@ public class MainFragment extends Fragment {
     private static final String TAG = "MainFragment";
 
     private static final int REQUEST_LOGIN = 0;
+    private static final int STT = 1;
 
     private static final int TYPING_TIMER_LENGTH = 600;
 
@@ -166,27 +172,96 @@ public class MainFragment extends Fragment {
         });
 
         ImageButton sendButton = (ImageButton) view.findViewById(R.id.send_button);
+        ImageButton sttButton = (ImageButton) view.findViewById(R.id.stt_button);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 attemptSend();
             }
         });
+        sttButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                speakToText();
+            }
+        });
+    }
+    private void speakToText(){
+
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                "Hi speak something");
+        try {
+            startActivityForResult(intent, STT);
+        } catch (ActivityNotFoundException ignored) {
+
+        }
+
+        if (null == mUsername) return;
+        if (!mSocket.connected()) return;
+
+        mTyping = false;
+
+        String message = mInputMessageView.getText().toString().trim();
+        if (TextUtils.isEmpty(message)) {
+            mInputMessageView.requestFocus();
+            return;
+        }
+
+        mInputMessageView.setText("");
+        addMessage(mUsername, message);
+
+        // perform the sending message attempt.
+        mSocket.emit("new message", message);
+
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (Activity.RESULT_OK != resultCode) {
-            getActivity().finish();
-            return;
-        }
+        Log.d("req code",""+requestCode);
+        Log.d("res code",""+resultCode);
 
-        mUsername = data.getStringExtra("username");
-        int numUsers = data.getIntExtra("numUsers", 1);
+        switch (requestCode){
+            case REQUEST_LOGIN:
+                if (RESULT_OK != resultCode) {
+                    getActivity().finish();
+                    return;
+                }
+
+                mUsername = data.getStringExtra("username");
+                int numUsers = data.getIntExtra("numUsers", 1);
+                addParticipantsLog(numUsers);
 
 //        addLog(getResources().getString(R.string.message_welcome));
-        addParticipantsLog(numUsers);
+                break;
+
+            case STT:
+
+                if (resultCode == RESULT_OK && null != data) {
+
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    mInputMessageView.setText(result.get(0));
+                }
+                break;
+
+
+        }
+
+//        if (Activity.RESULT_OK != resultCode) {
+//            getActivity().finish();
+//            return;
+//        }
+//
+//        mUsername = data.getStringExtra("username");
+//        int numUsers = data.getIntExtra("numUsers", 1);
+//
+////        addLog(getResources().getString(R.string.message_welcome));
+//        addParticipantsLog(numUsers);
     }
 
     @Override
