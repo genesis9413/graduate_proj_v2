@@ -89,7 +89,8 @@ public class drama_control extends AppCompatActivity {
         /** SQL문에서 출력된 값들을 하나씩 요소에 집어넣어 ListView에 뿌릴 준비 */
         while (cursor.moveToNext()) {
             DriveVO vo = new DriveVO();
-
+            vo.speaker = cursor.getString(0);
+            vo.dialog = cursor.getString(1);
             /** 출력 값들이 들어간 요소들을 ArrayList에 저장 */
             datas.add(vo);
         }

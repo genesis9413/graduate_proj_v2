@@ -4,19 +4,29 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp">
 
-
     <TextView
-        android:id="@+id/tv_dialog"
-        android:layout_width="match_parent"
+        android:id="@+id/tv_speaker"
+        android:layout_width="110dp"
         android:layout_height="match_parent"
         android:layout_marginBottom="2dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="2dp"
         android:layout_marginTop="2dp"
-        android:hint="지문"
+        android:hint="화자"
         android:textColor="#442C2E"
-        android:textSize="8pt"
-        />
+        android:textSize="7pt" />
+    <TextView
+        android:id="@+id/tv_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:hint="지문"
+        android:paddingTop="3dp"
+        android:textColor="#442C2E"
+        android:textSize="7pt" />
 
 
 </LinearLayout>

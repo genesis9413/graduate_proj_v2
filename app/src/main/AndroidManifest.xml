@@ -29,6 +29,13 @@
         <activity android:name=".wordmenu_control"/>
         <activity android:name=".drama_control"/>
         <activity android:name=".dramamenu_control"/>
+        <activity android:name=".Signup"/>
+        <activity android:name=".Knowledge_study"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Knowledge_quiz"/>
+        <activity android:name=".Knowledge_quiz_script"/>
+        <activity android:name=".Knowledge_quiz_control"/>
+        <activity android:name=".Knowledge_quiz_end"/>
 
     </application>
 

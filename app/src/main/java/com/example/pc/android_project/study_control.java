@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class study_control extends AppCompatActivity {
 
-    Button btn1, btn2, btn3, btn4;
+    Button btn1, btn2, btn3, btn4, btn5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public class study_control extends AppCompatActivity {
         btn2 = (Button)findViewById(R.id.btn2);
         btn3 = (Button)findViewById(R.id.btn3);
         btn4 = (Button)findViewById(R.id.btn4);
+        btn5 = (Button)findViewById(R.id.btn5);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,11 +38,28 @@ public class study_control extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(study_control.this, Knowledge_study.class);
+
+                startActivity(intent);
+            }
+        });
 
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(study_control.this, dramamenu_control.class);
+
+                startActivity(intent);
+            }
+        });
+
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(study_control.this, Knowledge_quiz_control.class);
 
                 startActivity(intent);
             }

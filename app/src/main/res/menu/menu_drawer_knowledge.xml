@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+            <item
+                android:id="@+id/home"
+                android:icon="@drawable/home"
+                android:checked="true"
+                android:title="HOME" />
+
+    <item android:title="알아두면 좋은 상식">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/keeptheright"
+                    android:icon="@drawable/book"
+                    android:title="우측통행" />
+
+                <item
+                    android:id="@+id/korea"
+                    android:icon="@drawable/book"
+                    android:title="한글과 한자" />
+
+            </group>
+
+        </menu>
+    </item>
+    <item android:title="우리나라 국가상징">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/roseofsharon"
+                    android:icon="@drawable/book"
+                    android:title="무궁화" />
+                <item
+                    android:id="@+id/flag"
+                    android:icon="@drawable/book"
+                    android:title="태국기" />
+                <item
+                    android:id="@+id/song"
+                    android:icon="@drawable/book"
+                    android:title="애국가" />
+            </group>
+        </menu>
+    </item>
+
+
+
+</menu>
