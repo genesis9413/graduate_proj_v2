@@ -13,7 +13,7 @@
         android:textSize="60dp"
         android:layout_marginBottom="50dp"
         android:layout_gravity="center"
-        android:text="LOGIN"/>
+        android:text="SIGNUP"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -30,11 +30,6 @@
             android:drawableLeft="@drawable/baseline_lock_black_18dp"
             android:hint=" Password"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="signin"
-            android:text="SIGNIN"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

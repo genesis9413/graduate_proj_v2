@@ -40,6 +40,16 @@
             android:shadowColor="#939393"
             android:shadowRadius="5"
             android:text="대본학습" />
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:textColor="#442C2E"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#939393"
+            android:shadowRadius="5"
+            android:text="학습퀴즈" />
 
         <Button
             android:id="@+id/btn3"
