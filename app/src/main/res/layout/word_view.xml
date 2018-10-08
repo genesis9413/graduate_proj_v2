@@ -21,42 +21,6 @@
             android:textSize="10pt"
             android:textStyle="bold" />
 
-        <!--<LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="end|center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/all_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/textview_shape"
-                android:text="모두"
-                android:textColor="#FFFFFF" />
-
-            <TextView
-                android:id="@+id/word_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/textview_shape"
-                android:text="단어"
-                android:textColor="#FFFFFF" />
-
-            <TextView
-                android:id="@+id/mean_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/textview_shape"
-                android:text="뜻"
-                android:textColor="#FFFFFF" />
-
-
-        </LinearLayout>-->
-
     </LinearLayout>
 
     <LinearLayout

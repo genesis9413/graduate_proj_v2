@@ -3,13 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:id="@+id/menu"
+        android:hint="메뉴이름"
+        android:textSize="20dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="0dp"
+        android:layout_weight="2"
         android:layout_margin="5dp"
         android:gravity="center_vertical"
         android:orientation="vertical">
+
 
         <LinearLayout
             android:layout_width="match_parent"
