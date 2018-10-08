@@ -5,9 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
-public class UserPage extends AppCompatActivity {
+public class Review_word extends AppCompatActivity {
 
     Button word, script;
 
@@ -25,15 +24,12 @@ public class UserPage extends AppCompatActivity {
     }
 
     public void word(View view) {
-        Intent intent = new Intent(this, Review_word.class);
-        startActivity(intent);
+
 
 
     }
 
     public void script(View view) {
-        Intent intent = new Intent(this, Review_script.class);
-        startActivity(intent);
 
     }
 

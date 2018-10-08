@@ -38,6 +38,8 @@
         <activity android:name=".Knowledge_quiz_end"/>
         <activity android:name=".Knowledge_quiz_end_script"/>
         <activity android:name=".UserPage"/>
+        <activity android:name=".Review_script"/>
+        <activity android:name=".Review_word"/>
 
     </application>
 
