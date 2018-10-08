@@ -23,7 +23,7 @@ public class Knowledge_quiz_control extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent;
-                intent = new Intent(Knowledge_quiz_control.this, Knowledge_quiz.class);
+                intent = new Intent(Knowledge_quiz_control.this, Knowledge_quiz_word.class);
                 startActivity(intent);
             }
         });

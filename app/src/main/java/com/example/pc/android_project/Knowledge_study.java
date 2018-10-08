@@ -114,6 +114,9 @@ public class Knowledge_study extends AppCompatActivity {
             case R.id.korea:
                 fragmentClass = Knowledge_study_fragment5.class;
                 break;
+            case R.id.manners:
+                fragmentClass = Knowledge_study_fragment6.class;
+                break;
             default:
                 fragmentClass = Knowledge_study_fragment_main.class;
         }

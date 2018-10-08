@@ -2,45 +2,56 @@ package com.example.pc.android_project;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Knowledge_quiz_word extends Fragment {
+import java.util.Arrays;
+
+public class Knowledge_quiz_word extends AppCompatActivity {
+
     TextView quizTxt;
     Button answer, wrong;
+
     String qu = "";
     String an = "";
     String wr = "";
-    Integer i = 1;
-    DBHelper helper = new DBHelper(getActivity());
+
+    String[] anArr = new String[5];
+    String[] wrArr = new String[5];
+
+    String id;
+
+    int i = 0;  // right num
+    int j = 0; //wrong num
+    int sum;
+
+    DBHelper helper = new DBHelper(this);
     Cursor cursor;
     SQLiteDatabase db;
 
-    @Nullable
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v =  inflater.inflate(R.layout.knowledge_quiz, container, false);
-
-        quizTxt = (TextView)v.findViewById(R.id.quizTxt);
-        answer = (Button)v.findViewById(R.id.answer);
-        wrong = (Button)v.findViewById(R.id.wrong);
-
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.knowledge_quiz);
+        quizTxt = (TextView) findViewById(R.id.quizTxt);
+        answer = (Button) findViewById(R.id.answer);
+        wrong = (Button) findViewById(R.id.wrong);
 
         db = helper.getWritableDatabase();
-        cursor = db.rawQuery("SELECT mean, word FROM wordTB order by random()", null);
+        cursor = db.rawQuery("SELECT mean, word, _id FROM wordTB order by random()", null);
 
         while (cursor.moveToNext()) {
             qu = cursor.getString(0);
             an = cursor.getString(1);
+            id = cursor.getString(2);
         }
 
         cursor = db.rawQuery("SELECT word FROM wordTB order by random()", null);
@@ -48,8 +59,7 @@ public class Knowledge_quiz_word extends Fragment {
             wr = cursor.getString(0);
         }
 
-        if( answer == wrong)
-        {
+        if (answer == wrong) {
             next_quiz();
         }
         quizTxt.setText(qu);
@@ -59,53 +69,87 @@ public class Knowledge_quiz_word extends Fragment {
         answer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                next_quiz();
+                i++;
+                sum = i + j;
                 show_an();
+                next_quiz();
             }
         });
+
 
         wrong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                j++;
+                sum = i + j;
                 show_wr();
+                next_quiz();
+
             }
         });
 
-        return v;
+
     }
 
+
+    void in() {
+        if (sum == 5) {
+            Intent intent = new Intent(Knowledge_quiz_word.this, Knowledge_quiz_end.class);
+            intent.putExtra("anArr", anArr);
+            intent.putExtra("wrArr", wrArr);
+            intent.putExtra("anCnt", i);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+
     void show_an() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("(" + sum + "/5)");
         builder.setMessage("정답입니다.");
         builder.setPositiveButton("예",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
+                        anArr[i - 1] = id;
+                        Log.v("arr", "" + Arrays.toString(anArr));
+                        in();
+
                     }
+
                 });
 
         builder.show();
     }
+
     void show_wr() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage("오답입니다.\n다시한번 고민해보세요.");
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("(" + sum + "/5)");
+        builder.setMessage("오답입니다.");
         builder.setPositiveButton("예",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+                        wrArr[j - 1] = id;
+                        Log.v("arr", "" + Arrays.toString(wrArr));
+                        in();
 
                     }
                 });
+
         builder.show();
     }
 
-    void next_quiz(){
+    void next_quiz() {
+
+
         db = helper.getWritableDatabase();
 
-        cursor = db.rawQuery("SELECT mean, word FROM wordTB order by random()", null);
+        cursor = db.rawQuery("SELECT mean, word,_id FROM wordTB order by random()", null);
         while (cursor.moveToNext()) {
             qu = cursor.getString(0);
             an = cursor.getString(1);
+            id = cursor.getString(2);
         }
 
         cursor = db.rawQuery("SELECT word FROM wordTB order by random()", null);
@@ -117,8 +161,10 @@ public class Knowledge_quiz_word extends Fragment {
         answer.setText(an);
         wrong.setText(wr);
 
+        Log.v("id", "" + id);
         cursor.close();
         db.close();
+
 
     }
 

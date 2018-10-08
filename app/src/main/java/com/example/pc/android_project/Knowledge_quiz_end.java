@@ -61,28 +61,25 @@ public class Knowledge_quiz_end extends AppCompatActivity {
 
         SQLiteDatabase db = helper.getWritableDatabase();
 
-//        String inClause = anArr.toString();
 
-//        inClause = inClause.replace("[","");
-//        inClause = inClause.replace("]","");
 
-//        cursor = db.rawQuery("SELECT word,mean FROM wordTB WHERE _id in" + inClause, null);
+            for(int i=0; i<5; i++){
+                cursor = db.rawQuery("SELECT word,mean FROM wordTB WHERE _id ==" + wrArr[i], null);
+                while (cursor.moveToNext()) {
+                    DriveVO vo = new DriveVO();
+                    vo.word = cursor.getString(0);
+                    vo.mean = cursor.getString(1);
 
-        for(int i=0; i<5; i++){
-            cursor = db.rawQuery("SELECT word,mean FROM wordTB WHERE _id ==" + wrArr[i], null);
-            while (cursor.moveToNext()) {
-                DriveVO vo = new DriveVO();
-                vo.word = cursor.getString(0);
-                vo.mean = cursor.getString(1);
-
-                /** 출력 값들이 들어간 요소들을 ArrayList에 저장 */
-                mydatas.add(vo);
+                    /** 출력 값들이 들어간 요소들을 ArrayList에 저장 */
+                    mydatas.add(vo);
+                }
             }
-        }
 
 
-        db.close();
-        helper.close();
+            db.close();
+            helper.close();
+
+
     }
 
 

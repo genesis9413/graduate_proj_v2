@@ -20,6 +20,10 @@
                     android:id="@+id/korea"
                     android:icon="@drawable/book"
                     android:title="한글과 한자" />
+                <item
+                    android:id="@+id/manners"
+                    android:icon="@drawable/book"
+                    android:title="예의 범절" />
 
             </group>
 
