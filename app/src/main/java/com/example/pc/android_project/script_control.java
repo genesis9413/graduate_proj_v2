@@ -51,7 +51,6 @@ public class script_control extends AppCompatActivity implements TextToSpeech.On
 
         db = helper.getWritableDatabase();
 
-
         cursor = db.rawQuery("SELECT _id, question, answer FROM scriptTB WHERE sort == '" + ary_name + "'", null);
 
         cursor.moveToLast();
