@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#442C2E"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#939393"
+        android:shadowRadius="5"
+        android:id="@+id/quiz_word"
+        android:text="단어"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#442C2E"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#939393"
+        android:shadowRadius="5"
+        android:id="@+id/quiz_script"
+        android:text="대본"/>
+
+</LinearLayout>

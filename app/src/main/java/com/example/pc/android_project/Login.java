@@ -84,6 +84,13 @@ public class Login extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"로그인실패", Toast.LENGTH_LONG).show();
         }
         */
+
+    }
+
+    public void signup(View view) {
+
+        Intent i = new Intent(this, Signup.class);
+        startActivity(i);
     }
 
 

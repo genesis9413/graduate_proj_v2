@@ -29,7 +29,18 @@
         <activity android:name=".scriptmenu_control"/>
         <activity android:name=".wordmenu_control"/>
         <activity android:name=".drama_control"/>
-        <activity android:name=".dramamenu_control"/>
+        <activity android:name=".Drama_menu"/>
+        <activity android:name=".Signup"/>
+        <activity android:name=".Knowledge_study"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Knowledge_quiz_word"/>
+        <activity android:name=".Knowledge_quiz_script"/>
+        <activity android:name=".Knowledge_quiz_control"/>
+        <activity android:name=".Knowledge_quiz_end"/>
+        <activity android:name=".Knowledge_quiz_end_script"/>
+        <activity android:name=".UserPage"/>
+        <activity android:name=".Review_script"/>
+        <activity android:name=".Review_word"/>
 
         <activity android:name=".chat.LoginActivity"/>
         <activity android:name=".chat.MainActivity"/>

@@ -42,10 +42,12 @@ public class DialogAdapter extends ArrayAdapter<DriveVO> {
         DriverHolder holder = (DriverHolder) convertView.getTag();
 
         /** 'item.xml'에 있는 요소들의 id 불러와 저장하는 과정 */
+        TextView speakerView = holder.speakerView;
         TextView dialogView = holder.dialogView;
 
         final DriveVO vo = datas.get(position);
 
+        speakerView.setText(vo.speaker);
         dialogView.setText(vo.dialog);
 
         return convertView;

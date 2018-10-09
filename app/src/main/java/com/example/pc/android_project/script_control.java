@@ -15,7 +15,7 @@ import java.util.Locale;
 
 public class script_control extends AppCompatActivity implements TextToSpeech.OnInitListener {
 
-    TextView question, answer;
+    TextView question, answer, menu;
     Button btnNext, a_record, q_record;
 
     DBHelper helper = new DBHelper(this);
@@ -26,10 +26,8 @@ public class script_control extends AppCompatActivity implements TextToSpeech.On
     String qu = "";
     String an = "";
 
-    /**
-     * DB 테이블 id 증가시켜주는 변수
-     */
-    Integer i = 1;
+    Integer a = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +36,7 @@ public class script_control extends AppCompatActivity implements TextToSpeech.On
 
         question = (TextView) findViewById(R.id.question);
         answer = (TextView) findViewById(R.id.answer);
+        menu = (TextView) findViewById(R.id.menu);
 
         btnNext = (Button) findViewById(R.id.btnNext);
         a_record = (Button) findViewById(R.id.a_record);
@@ -46,97 +45,56 @@ public class script_control extends AppCompatActivity implements TextToSpeech.On
         tts = new TextToSpeech(this, this);
 
         Bundle bundle = getIntent().getExtras();
-        Integer num = bundle.getInt("list_menu");
+        final String ary_name = bundle.getString("menu_name");
+
+        menu.setText(ary_name);
 
         db = helper.getWritableDatabase();
 
-        /** 리스트 <1. 인사>를 선택했을 경우 */
-        if (num == 0) {
-            cursor = db.rawQuery("SELECT question, answer FROM script_01TB WHERE _id == 1", null);
-            while (cursor.moveToNext()) {
-                qu = cursor.getString(0);
-                an = cursor.getString(1);
-            }
-            btnNext.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    db = helper.getWritableDatabase();
-                    ++i;
-                    if (i > 4)
-                        i = 1;
-                    cursor = db.rawQuery("SELECT question, answer FROM script_01TB WHERE _id == " + i, null);
-                    while (cursor.moveToNext()) {
-                        qu = cursor.getString(0);
-                        an = cursor.getString(1);
-                    }
-                    question.setText(qu);
-                    answer.setText(an);
+        cursor = db.rawQuery("SELECT _id, question, answer FROM scriptTB WHERE sort == '" + ary_name + "'", null);
 
-                    cursor.close();
-                    db.close();
-                }
-            });
+        cursor.moveToLast();
+        final int clength = cursor.getCount();
+        cursor.moveToFirst();
 
-            /** 리스트 <2. 대중교통>을 선택했을 경우 */
-        } else if (num == 1) {
-            cursor = db.rawQuery("SELECT question, answer FROM script_02TB WHERE _id == 1", null);
-            while (cursor.moveToNext()) {
-                qu = cursor.getString(0);
-                an = cursor.getString(1);
-            }
-            btnNext.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    db = helper.getWritableDatabase();
-                    ++i;
-                    if (i > 4)
-                        i = 1;
-                    cursor = db.rawQuery("SELECT question, answer FROM script_02TB WHERE _id == " + i, null);
-                    while (cursor.moveToNext()) {
-                        qu = cursor.getString(0);
-                        an = cursor.getString(1);
-                    }
-                    question.setText(qu);
-                    answer.setText(an);
+        final String[] id_arry = new String[clength];
 
-                    cursor.close();
-                    db.close();
-                }
-            });
-            /** 리스트 <3. 마트(시장)>을 선택했을 경우 */
-        } else {
-            cursor = db.rawQuery("SELECT question, answer FROM script_03TB WHERE _id == 1", null);
-            while (cursor.moveToNext()) {
-                qu = cursor.getString(0);
-                an = cursor.getString(1);
-            }
-            btnNext.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    db = helper.getWritableDatabase();
-                    ++i;
-                    if (i > 2)
-                        i = 1;
-                    cursor = db.rawQuery("SELECT question, answer FROM script_03TB WHERE _id == " + i, null);
-                    while (cursor.moveToNext()) {
-                        qu = cursor.getString(0);
-                        an = cursor.getString(1);
-                    }
-                    question.setText(qu);
-                    answer.setText(an);
-
-                    cursor.close();
-                    db.close();
-                }
-            });
+        for (int i = 0; i < clength; i++) {
+            id_arry[i] = cursor.getString(0);
+            cursor.moveToNext();
         }
 
-        /** 첫 대화화면 출력 */
+        cursor.moveToFirst();
+
+        while (cursor.moveToNext()) {
+            qu = cursor.getString(1);
+            an = cursor.getString(2);
+        }
         question.setText(qu);
         answer.setText(an);
 
-        cursor.close();
-        db.close();
+        /** 리스트 <1. 인사>를 선택했을 경우 */
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.v("aa", a + "");
+                cursor = db.rawQuery("SELECT _id, question, answer FROM scriptTB WHERE sort == '" + ary_name + "' AND _id ==" + id_arry[a], null);
+
+                while (cursor.moveToNext()) {
+                    qu = cursor.getString(1);
+                    an = cursor.getString(2);
+                }
+                question.setText(qu);
+                answer.setText(an);
+
+                ++a;
+
+                if (a >= clength)
+                    a = 0;
+
+            }
+        });
+
 
         q_record.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,6 +111,7 @@ public class script_control extends AppCompatActivity implements TextToSpeech.On
         });
 
     }
+
 
     /**
      * TTS 부분
