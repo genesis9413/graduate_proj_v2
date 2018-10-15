@@ -21,7 +21,7 @@
             android:inputType="textEmailAddress"
             android:id="@+id/etEmail"
             android:drawableLeft="@drawable/baseline_account_circle_black_18dp"
-            android:hint=" Email"/>
+            android:hint=" ID"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
