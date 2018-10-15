@@ -3,10 +3,11 @@
     package="com.example.pc.android_project">
 
     <!-- 음성인식에 필요함 -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".chat.ChatApplication"
         android:allowBackup="true"
@@ -15,35 +16,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".Login"/>
+        <activity android:name=".study_control" />
+        <activity android:name=".word_control" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".script_control" />
+        <activity android:name=".scriptmenu_control" />
+        <activity android:name=".wordmenu_control" />
+        <activity android:name=".drama_control" />
+        <activity android:name=".Drama_menu" />
+        <activity android:name=".Signup" />
+        <activity
+            android:name=".Knowledge_study"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Knowledge_quiz_word" />
+        <activity android:name=".Knowledge_quiz_script" />
+        <activity android:name=".Knowledge_quiz_control" />
+        <activity android:name=".Knowledge_quiz_end" />
+        <activity android:name=".Knowledge_quiz_end_script" />
+        <activity android:name=".UserPage" />
+        <activity android:name=".Review_word" />
+        <activity android:name=".Start" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
-        <activity android:name=".study_control"/>
-        <activity android:name=".word_control"/>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".script_control"/>
-        <activity android:name=".scriptmenu_control"/>
-        <activity android:name=".wordmenu_control"/>
-        <activity android:name=".drama_control"/>
-        <activity android:name=".Drama_menu"/>
-        <activity android:name=".Signup"/>
-        <activity android:name=".Knowledge_study"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Knowledge_quiz_word"/>
-        <activity android:name=".Knowledge_quiz_script"/>
-        <activity android:name=".Knowledge_quiz_control"/>
-        <activity android:name=".Knowledge_quiz_end"/>
-        <activity android:name=".Knowledge_quiz_end_script"/>
-        <activity android:name=".UserPage"/>
-        <activity android:name=".Review_script"/>
-        <activity android:name=".Review_word"/>
-
-        <activity android:name=".chat.LoginActivity"/>
-        <activity android:name=".chat.MainActivity"/>
+        <activity android:name=".chat.LoginActivity" />
+        <activity android:name=".chat.MainActivity" />
+        <activity android:name=".Member"/>
 
 
     </application>

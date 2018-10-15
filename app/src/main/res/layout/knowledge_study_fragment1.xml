@@ -25,10 +25,6 @@
         android:textSize="20dp"
         android:text="@string/keeptheright"
         />
-    <ImageView
-        android:layout_width="match_parent"
 
-        android:layout_height="wrap_content"
-        android:src="@drawable/keeptheright2"/>
 
 </LinearLayout>

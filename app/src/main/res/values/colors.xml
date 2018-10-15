@@ -2,10 +2,10 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ff4081</color>
 
-    <color name="username0">#e21400</color>
-    <color name="username1">#91580f</color>
+    <color name="username0">#ffbecd</color>
+    <color name="username1">#ff99b5</color>
     <color name="username2">#f8a700</color>
     <color name="username3">#f78b00</color>
     <color name="username4">#58dc00</color>
@@ -14,6 +14,6 @@
     <color name="username7">#4ae8c4</color>
     <color name="username8">#3b88eb</color>
     <color name="username9">#3824aa</color>
-    <color name="username10">#a700ff</color>
+    <color name="username10">#ffd5e7</color>
     <color name="username11">#d300e7</color>
 </resources>

@@ -29,8 +29,6 @@ import java.util.Map;
 public class Login extends AppCompatActivity {
 
     EditText etEmail, etPw;
-//    String email = "zz@zz";
-//    String password = "zzzz";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +44,9 @@ public class Login extends AppCompatActivity {
 
         etEmail = (EditText)findViewById(R.id.etEmail);
         etPw = (EditText)findViewById(R.id.etPw);
+        final String ee = etEmail.getText().toString();
 
-        JSONObject userData = new JSONObject();
+        final JSONObject userData = new JSONObject();
         userData.put("userid",etEmail.getText().toString());
         userData.put("password",etPw.getText().toString());
 
@@ -59,6 +58,7 @@ public class Login extends AppCompatActivity {
                     SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
                     SharedPreferences.Editor editor = pref.edit();
                     editor.putString("token", response.getString("token"));
+                    editor.putString("id", ee);
                     editor.apply();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -75,15 +75,7 @@ public class Login extends AppCompatActivity {
         });
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(jsonObjectRequest);
-/*
-        if(email.equals(etEmail.getText().toString())&& password.equals(etPw.getText().toString())) {
-            Toast.makeText(getApplicationContext(),"로그인성공", Toast.LENGTH_LONG).show();
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
-        }else{
-            Toast.makeText(getApplicationContext(),"로그인실패", Toast.LENGTH_LONG).show();
-        }
-        */
+
 
     }
 
