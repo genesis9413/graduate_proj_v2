@@ -1,13 +1,18 @@
 package com.example.pc.android_project.chat;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -40,6 +45,7 @@ import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 
 import static android.app.Activity.RESULT_OK;
+import static android.media.audiofx.AudioEffect.ERROR;
 
 
 /**
@@ -65,6 +71,8 @@ public class MainFragment extends Fragment {
 
     private Boolean isConnected = true;
 
+    private TextToSpeech tts;
+
     public MainFragment() {
         super();
     }
@@ -86,8 +94,31 @@ public class MainFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setHasOptionsMenu(true);
+
+        int permissionCheck1 = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.INTERNET);
+        if(permissionCheck1 == PackageManager.PERMISSION_DENIED)
+            ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.INTERNET},1);
+
+        int permissionCheck2 = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION);
+        if(permissionCheck2 == PackageManager.PERMISSION_DENIED)
+            ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.ACCESS_COARSE_LOCATION},1);
+
+        int permissionCheck3 = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION);
+        if(permissionCheck3 == PackageManager.PERMISSION_DENIED)
+            ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.ACCESS_FINE_LOCATION},1);
+
+
+
+        tts = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != ERROR) {
+                    // 언어를 선택한다.
+                    tts.setLanguage(Locale.KOREAN);
+                }
+            }
+        });
 
         ChatApplication app = (ChatApplication) getActivity().getApplication();
         mSocket = app.getSocket();
@@ -298,6 +329,9 @@ public class MainFragment extends Fragment {
     }
 
     private void addMessage(String username, String message) {
+
+        tts.speak(message,TextToSpeech.QUEUE_ADD,null);
+
         mMessages.add(new Message.Builder(Message.TYPE_MESSAGE)
                 .username(username).message(message).build());
         mAdapter.notifyItemInserted(mMessages.size() - 1);

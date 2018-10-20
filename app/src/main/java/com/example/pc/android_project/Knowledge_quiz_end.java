@@ -58,8 +58,6 @@ public class Knowledge_quiz_end extends AppCompatActivity {
             Log.v("wrCnt2",""+wrCnt);
         }
 
-
-
         mEdit1.commit();
 
         TextView count = (TextView) findViewById(R.id.count);

@@ -1,10 +1,10 @@
 <resources>
-    <string name="title_activity_login">Join</string>
+    <string name="title_activity_login">입장</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_username">What\'s your nickname?</string>
-    <string name="action_sign_in">Join</string>
-    <string name="action_sign_in_short">Join</string>
+    <string name="prompt_username">이름을 입력해주세요</string>
+    <string name="action_sign_in">입장</string>
+    <string name="action_sign_in_short">입장</string>
 
-    <string name="error_field_required">This field is required</string>
+    <string name="error_field_required">입력이 필요합니다</string>
 </resources>
