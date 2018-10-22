@@ -88,7 +88,7 @@ public class drama_control2 extends AppCompatActivity {
 
 
         /** DBHelper.java 에서 불러온 DB의 SQL문 작성 */
-        Cursor cursor = db.rawQuery("SELECT speaker, dialog , dialog2 FROM dialogTB WHERE sort = " +"'"+ dia +"'", null);
+        Cursor cursor = db.rawQuery("SELECT speaker, dialog , speaker2 FROM dialogTB WHERE sort = " +"'"+ dia +"'", null);
 
         ArrayList<DriveVO> datas = new ArrayList<>();
 

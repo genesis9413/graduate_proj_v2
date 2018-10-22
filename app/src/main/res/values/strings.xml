@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">android_project</string>
+    <string name="app_name">훈민정음</string>
 
     <!--<string name="app_name">Socket.IO Chat Demo</string>-->
     <string name="action_leave">Leave</string>
