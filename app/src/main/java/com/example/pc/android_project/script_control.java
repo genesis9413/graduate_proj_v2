@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +17,8 @@ import java.util.Locale;
 public class script_control extends AppCompatActivity implements TextToSpeech.OnInitListener {
 
     TextView question, answer, menu;
-    Button btnNext, a_record, q_record;
+    Button btnNext;
+    ImageView a_record, q_record;
 
     DBHelper helper = new DBHelper(this);
     Cursor cursor;
@@ -39,8 +41,8 @@ public class script_control extends AppCompatActivity implements TextToSpeech.On
         menu = (TextView) findViewById(R.id.menu);
 
         btnNext = (Button) findViewById(R.id.btnNext);
-        a_record = (Button) findViewById(R.id.a_record);
-        q_record = (Button) findViewById(R.id.q_record);
+        a_record = (ImageView) findViewById(R.id.a_record);
+        q_record = (ImageView) findViewById(R.id.q_record);
 
         tts = new TextToSpeech(this, this);
 
@@ -73,11 +75,9 @@ public class script_control extends AppCompatActivity implements TextToSpeech.On
         question.setText(qu);
         answer.setText(an);
 
-        /** 리스트 <1. 인사>를 선택했을 경우 */
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.v("aa", a + "");
                 cursor = db.rawQuery("SELECT _id, question, answer FROM scriptTB WHERE sort == '" + ary_name + "' AND _id ==" + id_arry[a], null);
 
                 while (cursor.moveToNext()) {
@@ -94,7 +94,6 @@ public class script_control extends AppCompatActivity implements TextToSpeech.On
 
             }
         });
-
 
         q_record.setOnClickListener(new View.OnClickListener() {
             @Override

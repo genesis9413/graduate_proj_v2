@@ -4,18 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="45dp">
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/android_icon"/>
-    </LinearLayout>
+    tools:context=".MainActivity"
+    android:background="#ffa98e">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,26 +17,18 @@
 
         <Button
             android:id="@+id/study_btn"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:textColor="#442C2E"
-            android:background="@drawable/buttonshape"
-            android:shadowColor="#939393"
-            android:shadowRadius="5"
-            android:layout_margin="5dp"
-            android:text="공부하기" />
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/ui01"/>
 
 
         <Button
             android:id="@+id/conver_btn"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:textColor="#442C2E"
-            android:background="@drawable/buttonshape"
-            android:shadowColor="#939393"
-            android:shadowRadius="5"
-            android:layout_margin="5dp"
-            android:text="대화하기" />
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/ui06"/>
     </LinearLayout>
 
 </LinearLayout>
