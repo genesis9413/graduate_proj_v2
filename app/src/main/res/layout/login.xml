@@ -5,35 +5,57 @@
     android:layout_height="match_parent"
     tools:context="com.example.soyeon.chatbot_project.MainActivity"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:background="@drawable/ui20"
     android:gravity="bottom">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ui14"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:id="@+id/etEmail"
-            android:drawableLeft="@drawable/baseline_account_circle_black_18dp"
-            android:hint=" Email"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:id="@+id/etPw"
-            android:drawableLeft="@drawable/baseline_lock_black_18dp"
-            android:hint=" Password"/>
+        </LinearLayout>
 
-        <Button
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="signin"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/buttonshape"
-            android:shadowColor="@android:color/darker_gray"
-            android:textColor="@android:color/white"
-            android:textSize="30dp"
-            android:text="로그인"/>
+            android:orientation="vertical"
+            android:paddingRight="30dp"
+            android:background="@android:color/white"
+            android:paddingLeft="30dp"
+            android:paddingTop="10dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:id="@+id/etEmail"
+                    android:drawableLeft="@drawable/baseline_account_circle_black_18dp"
+                    android:hint=" Email"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:id="@+id/etPw"
+                    android:drawableLeft="@drawable/baseline_lock_black_18dp"
+                    android:hint=" Password"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="signin"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/buttonshape"
+                    android:shadowColor="@android:color/darker_gray"
+                    android:textColor="@android:color/white"
+                    android:textSize="30dp"
+                    android:text="로그인"/>
+
+        </LinearLayout>
+
+
 
 
 

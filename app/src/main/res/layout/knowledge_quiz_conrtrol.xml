@@ -2,28 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:textColor="#442C2E"
-        android:background="@drawable/buttonshape"
-        android:shadowColor="#939393"
-        android:shadowRadius="5"
-        android:id="@+id/quiz_word"
-        android:text="단어"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:textColor="#442C2E"
-        android:background="@drawable/buttonshape"
-        android:shadowColor="#939393"
-        android:shadowRadius="5"
-        android:id="@+id/quiz_script"
-        android:text="대본"/>
+        android:orientation="vertical"
+        android:padding="100dp">
+
+        <Button
+            android:id="@+id/quiz_word"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/ui13"
+            android:text="단어"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/quiz_script"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:background="@drawable/ui13"
+            android:text="대본"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

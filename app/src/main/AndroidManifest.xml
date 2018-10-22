@@ -24,7 +24,7 @@
         <activity android:name=".script_control" />
         <activity android:name=".scriptmenu_control" />
         <activity android:name=".wordmenu_control" />
-        <activity android:name=".drama_control" />
+        <activity android:name=".drama_control2" />
         <activity android:name=".Drama_menu" />
         <activity android:name=".Signup" />
         <activity

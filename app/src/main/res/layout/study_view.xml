@@ -24,7 +24,7 @@
             android:layout_margin="15dp"
             android:textColor="#442C2E"
             android:background="@drawable/ui13"
-            android:text="드라마대본" />
+            android:text="영상학습" />
 
         <Button
             android:id="@+id/btn2"

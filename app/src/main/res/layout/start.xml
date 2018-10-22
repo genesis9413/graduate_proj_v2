@@ -5,7 +5,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
+    android:background="@drawable/ui07"
     android:gravity="bottom">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingBottom="40dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="훈민"
+            android:textSize="100dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="정음"
+            android:textSize="100dp"/>
+
+    </LinearLayout>
+
 
 
     <Button
@@ -24,6 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
+        android:textColor="@android:color/white"
         android:onClick="signin"
         android:text="계정이 이미 있습니다." />
 

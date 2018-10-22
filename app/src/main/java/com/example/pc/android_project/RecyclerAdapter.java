@@ -75,7 +75,7 @@ public class RecyclerAdapter extends Adapter<RecyclerAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context,item.getTitle(),Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(v.getContext(), drama_control.class);
+                Intent intent = new Intent(v.getContext(), drama_control2.class);
                 Log.v("id",position+"");
                 intent.putExtra("id",position);
                 v.getContext().startActivity(intent);

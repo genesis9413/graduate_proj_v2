@@ -18,7 +18,7 @@ import android.widget.VideoView;
 
 import java.util.ArrayList;
 
-public class drama_control extends AppCompatActivity {
+public class drama_control2 extends AppCompatActivity {
 
 
     @Override
@@ -27,7 +27,7 @@ public class drama_control extends AppCompatActivity {
         setContentView(R.layout.drama_view);
 
         final VideoView video = (VideoView) findViewById(R.id.video);
-        ListView listView = (ListView) findViewById(R.id.list);
+           ListView listView = (ListView) findViewById(R.id.list);
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
         int drama[] = {R.raw.ghost,R.raw.cookie,R.raw.clean, R.raw.bug, R.raw.color, R.raw.snake};
@@ -75,40 +75,43 @@ public class drama_control extends AppCompatActivity {
         });
 
         video.stopPlayback();
-            int ur = drama[id];
-            String dia = sort[id];
-            Log.v("dd",ur+"");
-            String uriPath = "android.resource://" + getPackageName() + "/" + ur;
-            Log.v("uri", uriPath + "");
-            Uri uri = Uri.parse(uriPath);
-            video.setVideoURI(uri);
-            video.seekTo(100);
-            video.requestFocus();
-            video.stopPlayback();
+        int ur = drama[id];
+        String dia = sort[id];
+        Log.v("dd",ur+"");
+        String uriPath = "android.resource://" + getPackageName() + "/" + ur;
+        Log.v("uri", uriPath + "");
+        Uri uri = Uri.parse(uriPath);
+        video.setVideoURI(uri);
+        video.seekTo(100);
+        video.requestFocus();
+        video.stopPlayback();
 
 
         /** DBHelper.java 에서 불러온 DB의 SQL문 작성 */
-        Cursor cursor = db.rawQuery("SELECT speaker, dialog FROM dialogTB WHERE sort = " +"'"+ dia +"'", null);
+        Cursor cursor = db.rawQuery("SELECT speaker, dialog , dialog2 FROM dialogTB WHERE sort = " +"'"+ dia +"'", null);
 
         ArrayList<DriveVO> datas = new ArrayList<>();
 
         /** SQL문에서 출력된 값들을 하나씩 요소에 집어넣어 ListView에 뿌릴 준비 */
         while (cursor.moveToNext()) {
             DriveVO vo = new DriveVO();
-            vo.speaker = cursor.getString(0);
-            vo.dialog = cursor.getString(1);
-            /** 출력 값들이 들어간 요소들을 ArrayList에 저장 */
+            vo.speaker = cursor.getString(1);
+            vo.dialog = cursor.getString(2);
             datas.add(vo);
         }
+
+
 
         db.close();
         helper.close();
 
         /** 저장된 ArrayList를 ListView에 뿌리기 */
-        DialogAdapter adapter = new DialogAdapter(this, R.layout.dialog_item, datas);
+        DialogAdapter adapter = new DialogAdapter(this, R.layout.drama_item, datas);
 
-        listView.setAdapter(adapter);
+            listView.setAdapter(adapter);
     }
+
+
 
 
 }

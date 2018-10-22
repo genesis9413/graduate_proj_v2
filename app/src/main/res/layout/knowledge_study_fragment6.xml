@@ -2,21 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ui10"
     android:orientation="vertical">
-    <TextView      android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="예의 범절"
-        android:textSize="40dp"
-        android:background="#ffa98e"
-        android:textColor="#ffffff"
-        android:textAlignment="center"/>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/manners"
-        android:lineSpacingExtra="10dp"
         android:padding="20dp"
         android:textSize="20dp"
         android:text="@string/manners"
