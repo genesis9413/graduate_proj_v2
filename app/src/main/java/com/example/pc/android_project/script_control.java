@@ -139,8 +139,6 @@ public class script_control extends AppCompatActivity implements TextToSpeech.On
             } else {
                 a_record.setEnabled(true);
                 q_record.setEnabled(true);
-                a_speakOut();
-                q_speakOut();
             }
 
         } else {
